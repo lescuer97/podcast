@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: Params) => {
     "description",
     "content",
   ]);
-  console.log(params);
+ 
   const cont = await markdownToHtml(file[0].content);
 
   return {
@@ -68,20 +68,3 @@ export const getStaticProps: GetStaticProps = async ({ params }: Params) => {
     },
   };
 };
-
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const posts = getAllPosts(["id"]);
-
-//   return {
-//     paths: [
-//       ...posts.map((post) => {
-//         return {
-//           params: {
-//             id: post.id,
-//           },
-//         };
-//       }),
-//     ],
-//     fallback: false,
-//   };
-// };
