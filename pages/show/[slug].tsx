@@ -13,28 +13,33 @@ import { Items, Params } from "../../lib/types";
 import Link from "next/link";
 
 export default function Id({ file, arr }) {
-  // TODO QUE EL LADO DERECHO CON LAS NOTAS DEL PODCAST SEA EL ULTIMO COMO PRESELECCIONADO,
-  //      PERO QUE CAMBIE CUANDO SE SELECCIONA OTRO, SE PODRIA USAR USE STATE PARA ESO
+
 
 const router = useRouter();
 const pathForNotes= router.asPath.split("/show/")[1];
 
 const cont = arr.find(element => element[1] == pathForNotes);
-console.log(cont);
 
-  // console.log(pathForNotes);
+
+  
   return (
-    <div className="flex flex-col items-center  ">
+    <div className="w-screen h-screen flex justify-center">
+      <div className="complete ">
+        <div className="left-shadow">
+          
       <Header />
 
-      <main className="flex flex-row mt-4  md:w-3/5 justify-between border border-solid">
-        <div className="w-3/6">
+      <main className="main">
+      {/* <div className="player">Hello</div> */}
+        <div className="theme-scroll">
           {file.map((dat) => {
             return <ListTile key={dat.date} dat={dat} />;
           })}
         </div>
         <ShowData dat={cont[0]} />
       </main>
+      </div>
+      </div>
     </div>
   );
 }
@@ -44,7 +49,7 @@ const ListTile = (props) => {
 const pathForNotes= router.asPath.split("/show/")[1];
 
   return (
-    <div className={`h-16 pl-5 pr-2 ${props.dat.slug === pathForNotes && "bg-gray-200"}  border border-solid border-l-0`}>
+    <div className={`h-16 pl-5 pr-2 ${props.dat.slug === pathForNotes && "bg-gray-200"}  border border-solid border-l-0 border-t-0`}>
       {" "}
       <Link
         href={{
@@ -95,7 +100,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = getAllPosts(["slug", "id"]);
-  console.log(posts);
+
   return {
     paths: [
       ...posts.map((post) => {
