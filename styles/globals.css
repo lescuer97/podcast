@@ -3,16 +3,41 @@
 @tailwind components;
 @tailwind utilities;
 
+.header-height {
+  padding-top: 1.5vh;
+  height: 6vh;
+}
+
+main {
+  @apply flex;
+  @apply flex-wrap;
+  /* @apply flex-row;
+  @apply justify-between; */
+}
+
+.player {
+ @apply sticky;
+ @apply w-full;
+ @apply  h-16;
+ @apply bottom-0;
+ @apply bg-white;
+ z-index: 2;
+ top: -1px;
+}
+
 .scroll {
-  top: 10vh;
-  height: 92vh;
-  @apply border;
-  @apply border-solid;
-  @apply w-full;
+  height: 96vh;
+  top:  0vh;
   @apply px-8;
   @apply py-4;
-  @apply overflow-y-auto;
+  @apply overflow-y-scroll;
+  @apply m-0;
+  @apply sticky;
+  @apply h-64;
+  @apply md:w-full;
+  @apply md:w-4/6;
 }
+
 .scroll h1,
 h2,
 h3 {
@@ -26,4 +51,28 @@ h3 {
 .first-child div:first-child {
   @apply bg-gray-200;
 
+}
+
+.theme-scroll {
+@apply  w-full;
+@apply sticky;
+@apply h-64;
+@apply overflow-y-scroll;
+@apply  md:w-2/6;
+@apply md:h-full;
+}
+
+
+.complete {
+ 
+  @apply flex;
+  @apply flex-col;
+  @apply items-center;
+  @apply w-full;
+  @apply md:w-3/5;
+  /* box-shadow: 5px 0px 3px 3px rgba(0, 0, 0, 0.2); */
+}
+
+.left-shadow{
+  /* box-shadow: -5px 0px 3px 3px rgba(0, 0, 0, 0.2); */
 }
