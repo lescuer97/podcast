@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 
-import { GetStaticPaths, GetStaticProps } from "next";
+import {  GetStaticProps } from "next";
 
 import ShowData from "../components/ShowData";
 import { getAllPosts, markdownToHtml } from "../lib/getMarkdown";
@@ -11,14 +11,14 @@ export default function Home({ file, cont }) {
 //TODO MAKE THE MOBILE VERSION WORK BETTER
 
   return (
-    <div className="w-screen h-screen flex justify-center">
+    <div className="w-100 h-100 flex justify-center">
       <div className="complete" >
-      <div className="left-shadow">
+    
       <Header />
 
       <main className="main">
         {/* <div className="player">Hello</div> */}
-        <div className="theme-scroll first-child ">
+        <div className="theme-scroll first-child " id="theme-scroll">
           {file.map((dat) => {
             return <ListTile key={dat.date} dat={dat} />;
           })}
@@ -27,13 +27,13 @@ export default function Home({ file, cont }) {
       </main>
     </div>
     </div>
-    </div>
+   
   );
 }
 
 const ListTile = (props) => {
   return (
-    <div className="h-16 pl-5 pr-2  border border-solid border-l-0 border-t-0">
+    <div className="pl-5 pr-2 py-1 border border-solid border-l-0 border-t-0">
       {" "}
       <Link
         href={{

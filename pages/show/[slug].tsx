@@ -23,7 +23,7 @@ const cont = arr.find(element => element[1] == pathForNotes);
 
   
   return (
-    <div className="w-screen h-screen flex justify-center">
+    <div className="w-100 h-100 flex justify-center">
       <div className="complete ">
         <div className="left-shadow">
           
@@ -31,7 +31,7 @@ const cont = arr.find(element => element[1] == pathForNotes);
 
       <main className="main">
       {/* <div className="player">Hello</div> */}
-        <div className="theme-scroll">
+      <div className="theme-scroll " id="theme-scroll">
           {file.map((dat) => {
             return <ListTile key={dat.date} dat={dat} />;
           })}
@@ -49,7 +49,7 @@ const ListTile = (props) => {
 const pathForNotes= router.asPath.split("/show/")[1];
 
   return (
-    <div className={`h-16 pl-5 pr-2 ${props.dat.slug === pathForNotes && "bg-gray-200"}  border border-solid border-l-0 border-t-0`}>
+    <div className={`py-1 pl-5 pr-2 border border-solid border-l-0 border-t-0 ${props.dat.slug === pathForNotes && "bg-gray-200"}  `}>
       {" "}
       <Link
         href={{
