@@ -3,7 +3,38 @@
 @tailwind components;
 @tailwind utilities;
 
-.header-height {
+@media (max-width: 640px){
+  .complete {
+    margin: 0px 10px;
+  }
+  #theme-scroll {
+    position: relative;
+  
+    z-index: 2;
+    height: 35vh;
+    @apply w-full;
+    @apply border; 
+    @apply border-solid;
+    @apply border-l-0;
+    @apply border-r-0;
+    @apply border-t-0;
+
+    @apply overflow-y-scroll;
+  
+
+  }
+  #scroll {
+  height: 45vh;
+  z-index: 1;
+  position: relative;
+  }
+
+  #header{
+  z-index: 3;
+  position: relative;
+ 
+  }
+}
   padding-top: 1.5vh;
   height: 6vh;
 }
