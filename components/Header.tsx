@@ -5,11 +5,11 @@ import Youtube from "./svgs/Youtube";
 import Spotify from "./svgs/Spotify";
 import Itunes from "./svgs/Itunes";
 
-const Header = () => {
+export default function Header()  {
 
 
   return (
-    <header className=" header-height justify-center " id="header-height"> 
+    <header className="header justify-center" id="header"> 
       <Link href="/" ><a className="p-3">Leito's Complaints</a></Link>
       <ul className="flex flex-row md:flex-row  space-y-1 md:space-y-0 md:space-x-5  ">
         <div className=" flex flex-col md:flex-row justify-center">
@@ -27,4 +27,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+
