@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @media (max-width: 640px){
   .complete {
     margin: 0px 10px;
@@ -35,15 +36,29 @@
  
   }
 }
+.svg {
+  height: 15px;
+  width: auto;
+}
+.header {
   padding-top: 1.5vh;
-  height: 6vh;
+  @apply w-full;
+  @apply px-4;
+  @apply py-4;
+  @apply flex;
+  @apply flex-wrap;
+  @apply border; 
+  @apply border-solid;
+  @apply border-l-0;
+  @apply border-r-0;
+  @apply md:flex-row;
+  @apply md:justify-between;
+
 }
 
 main {
   @apply flex;
   @apply flex-wrap;
-  /* @apply flex-row;
-  @apply justify-between; */
 }
 
 .player {
@@ -57,14 +72,15 @@ main {
 }
 
 .scroll {
-  height: 96vh;
-  top:  0vh;
-  @apply px-8;
-  @apply py-4;
+  height: 100vh;
+  top: 0px;
+  @apply px-2;
+  @apply md:px-8;
+  @apply py-1;
+  @apply md:py-4;
   @apply overflow-y-scroll;
   @apply m-0;
   @apply sticky;
-  @apply h-64;
   @apply md:w-full;
   @apply md:w-4/6;
 }
@@ -72,30 +88,24 @@ main {
 .scroll h1,
 h2,
 h3 {
-  @apply mt-10;
-  @apply mb-6;
+  @apply mt-3;
 }
 .scroll p {
-  @apply mb-8;
+
 }
 
 .first-child div:first-child {
   @apply bg-gray-200;
-
 }
 
 .theme-scroll {
-@apply  w-full;
 @apply sticky;
-@apply h-64;
-@apply overflow-y-scroll;
 @apply  md:w-2/6;
 @apply md:h-full;
 }
 
 
 .complete {
- 
   @apply flex;
   @apply flex-col;
   @apply items-center;
