@@ -8,15 +8,17 @@ import { Items, Params } from "../lib/types";
 import Link from "next/link";
 
 export default function Home({ file, cont }) {
-  // TODO QUE EL LADO DERECHO CON LAS NOTAS DEL PODCAST SEA EL ULTIMO COMO PRESELECCIONADO,
-  //      PERO QUE CAMBIE CUANDO SE SELECCIONA OTRO, SE PODRIA USAR USE STATE PARA ESO
+//TODO MAKE THE MOBILE VERSION WORK BETTER
 
   return (
-    <div className="flex flex-col items-center  ">
+    <div className="w-screen h-screen flex justify-center">
+      <div className="complete" >
+      <div className="left-shadow">
       <Header />
 
-      <main className="flex flex-row mt-4  md:w-3/5 justify-between border border-solid ">
-        <div className="w-3/6 first-child">
+      <main className="main">
+        {/* <div className="player">Hello</div> */}
+        <div className="theme-scroll first-child ">
           {file.map((dat) => {
             return <ListTile key={dat.date} dat={dat} />;
           })}
@@ -24,12 +26,14 @@ export default function Home({ file, cont }) {
         <ShowData dat={cont} />
       </main>
     </div>
+    </div>
+    </div>
   );
 }
 
 const ListTile = (props) => {
   return (
-    <div className="h-16 pl-5 pr-2 border border-solid border-l-0">
+    <div className="h-16 pl-5 pr-2  border border-solid border-l-0 border-t-0">
       {" "}
       <Link
         href={{
