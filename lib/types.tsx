@@ -6,3 +6,9 @@ export type Params = {
     id: string;
   };
 };
+
+export type Style = {
+  props: {
+    style: string;
+  };
+};
