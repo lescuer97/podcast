@@ -3,6 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face{
+  font-family:"helvetica-lt-std-roman";
+  src:url("https://candyfonts.com/wp-data/2019/04/06/51153/HelveticaLTStd-Roman.otf") format("woff"),
+  url("https://candyfonts.com/wp-data/2019/04/06/51153/HelveticaLTStd-Roman.otf") format("opentype"),
+  url("https://candyfonts.com/wp-data/2019/04/06/51153/HelveticaLTStd-Roman.otf") format("truetype");
+}
 
 @media (max-width: 640px){
   .complete {
@@ -19,11 +25,14 @@
     @apply border-l-0;
     @apply border-r-0;
     @apply border-t-0;
-
     @apply overflow-y-scroll;
-  
-
   }
+
+  .svg-logo {
+    height: 6em;
+    width: auto;
+  }
+
   #scroll {
   height: 45vh;
   z-index: 1;
@@ -40,11 +49,16 @@
   height: 15px;
   width: auto;
 }
+.svg-logo {
+  height: 3.5em;
+  width: auto;
+}
+
 .header {
   padding-top: 1.5vh;
   @apply w-full;
   @apply px-4;
-  @apply py-4;
+  @apply py-2;
   @apply flex;
   @apply flex-wrap;
   @apply border; 
@@ -73,6 +87,7 @@ main {
 
 .scroll {
   height: 100vh;
+  /* por agunarazon necesito top en 0 para poder tener un sticky website */
   top: 0px;
   @apply px-2;
   @apply md:px-8;
@@ -106,11 +121,13 @@ h3 {
 
 
 .complete {
+  font-family: "helvetica-lt-std-roman", sans-serif;
   @apply flex;
   @apply flex-col;
   @apply items-center;
   @apply w-full;
-  @apply md:w-3/5;
+  @apply md:w-4/5;
+  @apply lg:w-3/5;
   /* box-shadow: 5px 0px 3px 3px rgba(0, 0, 0, 0.2); */
 }
 
