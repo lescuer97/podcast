@@ -8,22 +8,21 @@ import { Items, Params } from "../lib/types";
 import Link from "next/link";
 
 export default function Home({ file, cont }) {
-//TODO MAKE THE MOBILE VERSION WORK BETTER
-
+//CONNECT TO CMS
   return (
-    <div className="w-100 h-100 flex justify-center">
-      <div className="complete" >
+    <div className="w-100 h-100 flex justify-center font-mono">
+      <div className="complete " >
     
       <Header />
 
       <main className="main">
         {/* <div className="player">Hello</div> */}
         <div className="theme-scroll first-child " id="theme-scroll">
-          {file.map((dat) => {
-            return <ListTile key={dat.date} dat={dat} />;
+          {file.map((list) => {
+            return <ListTile key={list.date} list={list} />;
           })}
         </div>
-        <ShowData dat={cont} />
+        <ShowData list={cont} />
       </main>
     </div>
     </div>
@@ -33,20 +32,20 @@ export default function Home({ file, cont }) {
 
 const ListTile = (props) => {
   return (
-    <div className="pl-5 pr-2 py-1 border border-solid border-l-0 border-t-0">
+    <div className="py-1 pl-5 pr-3 border border-solid border-l-0 border-t-0 ">
       {" "}
       <Link
         href={{
           pathname: "/show/[id]",
-          query: { id: `${props.dat.id}` },
+          query: { id: `${props.list.id}` },
         }}
-        as={`/show/${props.dat.slug}`}
+        as={`/show/${props.list.slug}`}
       >
         <a>
           <p className="inline text-xs font-thin text-gray-500">
-            Episode {props.dat.id}
+            Episode {props.list.id}
           </p>
-          <h1> {props.dat.title}</h1>
+          <h1> {props.list.title}</h1>
         </a>
       </Link>
     </div>

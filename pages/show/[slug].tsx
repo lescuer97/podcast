@@ -32,11 +32,11 @@ const cont = arr.find(element => element[1] == pathForNotes);
       <main className="main">
       {/* <div className="player">Hello</div> */}
       <div className="theme-scroll " id="theme-scroll">
-          {file.map((dat) => {
-            return <ListTile key={dat.date} dat={dat} />;
+          {file.map((list) => {
+            return <ListTile key={list.date} list={list} />;
           })}
         </div>
-        <ShowData dat={cont[0]} />
+        <ShowData list={cont[0]} />
       </main>
       </div>
       </div>
@@ -49,19 +49,19 @@ const ListTile = (props) => {
 const pathForNotes= router.asPath.split("/show/")[1];
 
   return (
-    <div className={`py-1 pl-5 pr-2 border border-solid border-l-0 border-t-0 ${props.dat.slug === pathForNotes && "bg-gray-200"}  `}>
+    <div className={` py-1 pl-5 pr-3 border border-solid border-l-0 border-t-0 ${props.list.slug === pathForNotes && "bg-gray-200"}  `}>
       {" "}
       <Link
         href={{
           pathname: "/show/[slug]",
-          query: { slug: `${props.dat.slug}` },
+          query: { slug: `${props.list.slug}` },
         }}
       >
         <a>
           <p className="inline text-xs font-thin text-gray-500">
-            Episode {props.dat.id}
+            Episode {props.list.id}
           </p>
-          <h1> {props.dat.title}</h1>
+          <h1> {props.list.title}</h1>
         </a>
       </Link>
     </div>
