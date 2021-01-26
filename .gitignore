@@ -32,7 +32,11 @@ yarn-error.log*
 
 # vercel
 .vercel
-
+.next/
+node_modules/
+/npm-debug.log
+.DS_Store
+out/
 
 
 #Exclude tsc generated files
