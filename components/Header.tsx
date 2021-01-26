@@ -1,20 +1,31 @@
 import React from "react";
 import Link from 'next/link';
 
-const Header = () => {
+import {Youtube, Spotify, Itunes, Play} from "./svgs/small_logos";
 
+import Logo from "./svgs/Logo";
+
+export default function Header()  {
 
   return (
-    <header className="flex flex-col justify-between md:flex-row md:w-4/5 my-3">
-      <Link href="/" ><a>Leito's Complaints</a></Link>
-      <ul className="flex flex-col md:flex-row space-y-1 md:space-y-0 md:space-x-5">
-        <li className="">Itunes</li>
-        <li className="">Spotify</li>
-        <li className="">Google Play</li>
-        <li>Youtube</li>
+    <header className="header justify-center" id="header"> 
+      <Link href="/" ><a className=""><Logo /></a></Link>
+      <ul className="flex flex-row md:flex-row   md:mt-2 ">
+        <div className=" flex flex-col md:flex-row justify-center">
+          <li className="px-4 py-2 mx-2   text-center "> 
+            <Itunes /> Itunes</li>
+          <li className="px-4 py-2 mx-2  text-center"> 
+            <Spotify /> Spotify</li>
+        </div>
+        <div className="flex flex-col md:flex-row justify-center">
+          <li className="px-4 py-2 mx-2  text-center"> 
+               <Play  /> Google Play</li>
+          <li className="px-4 py-2 mx-2  text-center"> 
+              <Youtube /> Youtube</li>
+        </div>
       </ul>
     </header>
   );
 };
 
-export default Header;
+

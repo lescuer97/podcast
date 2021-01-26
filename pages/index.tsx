@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 
-import { GetStaticPaths, GetStaticProps } from "next";
+import {  GetStaticProps } from "next";
 
 import ShowData from "../components/ShowData";
 import { getAllPosts, markdownToHtml } from "../lib/getMarkdown";
@@ -8,41 +8,44 @@ import { Items, Params } from "../lib/types";
 import Link from "next/link";
 
 export default function Home({ file, cont }) {
-  // TODO QUE EL LADO DERECHO CON LAS NOTAS DEL PODCAST SEA EL ULTIMO COMO PRESELECCIONADO,
-  //      PERO QUE CAMBIE CUANDO SE SELECCIONA OTRO, SE PODRIA USAR USE STATE PARA ESO
-
+//CONNECT TO CMS
   return (
-    <div className="flex flex-col items-center  ">
+    <div className="w-100 h-100 flex justify-center font-mono">
+      <div className="complete " >
+    
       <Header />
 
-      <main className="flex flex-row mt-4  md:w-3/5 justify-between border border-solid ">
-        <div className="w-3/6 first-child">
-          {file.map((dat) => {
-            return <ListTile key={dat.date} dat={dat} />;
+      <main className="main">
+        {/* <div className="player">Hello</div> */}
+        <div className="theme-scroll first-child " id="theme-scroll">
+          {file.map((list) => {
+            return <ListTile key={list.date} list={list} />;
           })}
         </div>
-        <ShowData dat={cont} />
+        <ShowData list={cont} />
       </main>
     </div>
+    </div>
+   
   );
 }
 
 const ListTile = (props) => {
   return (
-    <div className="h-16 pl-5 pr-2 border border-solid border-l-0">
+    <div className="py-1 pl-5 pr-3 border border-solid border-l-0 border-t-0 ">
       {" "}
       <Link
         href={{
           pathname: "/show/[id]",
-          query: { id: `${props.dat.id}` },
+          query: { id: `${props.list.id}` },
         }}
-        as={`/show/${props.dat.slug}`}
+        as={`/show/${props.list.slug}`}
       >
         <a>
           <p className="inline text-xs font-thin text-gray-500">
-            Episode {props.dat.id}
+            Episode {props.list.id}
           </p>
-          <h1> {props.dat.title}</h1>
+          <h1> {props.list.title}</h1>
         </a>
       </Link>
     </div>

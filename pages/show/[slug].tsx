@@ -13,28 +13,33 @@ import { Items, Params } from "../../lib/types";
 import Link from "next/link";
 
 export default function Id({ file, arr }) {
-  // TODO QUE EL LADO DERECHO CON LAS NOTAS DEL PODCAST SEA EL ULTIMO COMO PRESELECCIONADO,
-  //      PERO QUE CAMBIE CUANDO SE SELECCIONA OTRO, SE PODRIA USAR USE STATE PARA ESO
+
 
 const router = useRouter();
 const pathForNotes= router.asPath.split("/show/")[1];
 
 const cont = arr.find(element => element[1] == pathForNotes);
-console.log(cont);
 
-  // console.log(pathForNotes);
+
+  
   return (
-    <div className="flex flex-col items-center  ">
+    <div className="w-100 h-100 flex justify-center">
+      <div className="complete ">
+        <div className="left-shadow">
+          
       <Header />
 
-      <main className="flex flex-row mt-4  md:w-3/5 justify-between border border-solid">
-        <div className="w-3/6">
-          {file.map((dat) => {
-            return <ListTile key={dat.date} dat={dat} />;
+      <main className="main">
+      {/* <div className="player">Hello</div> */}
+      <div className="theme-scroll " id="theme-scroll">
+          {file.map((list) => {
+            return <ListTile key={list.date} list={list} />;
           })}
         </div>
-        <ShowData dat={cont[0]} />
+        <ShowData list={cont[0]} />
       </main>
+      </div>
+      </div>
     </div>
   );
 }
@@ -44,19 +49,19 @@ const ListTile = (props) => {
 const pathForNotes= router.asPath.split("/show/")[1];
 
   return (
-    <div className={`h-16 pl-5 pr-2 ${props.dat.slug === pathForNotes && "bg-gray-200"}  border border-solid border-l-0`}>
+    <div className={` py-1 pl-5 pr-3 border border-solid border-l-0 border-t-0 ${props.list.slug === pathForNotes && "bg-gray-200"}  `}>
       {" "}
       <Link
         href={{
           pathname: "/show/[slug]",
-          query: { slug: `${props.dat.slug}` },
+          query: { slug: `${props.list.slug}` },
         }}
       >
         <a>
           <p className="inline text-xs font-thin text-gray-500">
-            Episode {props.dat.id}
+            Episode {props.list.id}
           </p>
-          <h1> {props.dat.title}</h1>
+          <h1> {props.list.title}</h1>
         </a>
       </Link>
     </div>
@@ -95,7 +100,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = getAllPosts(["slug", "id"]);
-  console.log(posts);
+
   return {
     paths: [
       ...posts.map((post) => {
