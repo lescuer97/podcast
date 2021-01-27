@@ -10,10 +10,7 @@ import Link from "next/link";
 export default function Home({ file, cont }) {
 //CONNECT TO CMS
   return (
-    <div className="w-100 h-100 flex justify-center font-mono">
-      <div className="complete " >
-    
-      <Header />
+
 
       <main className="main">
         {/* <div className="player">Hello</div> */}
@@ -24,8 +21,7 @@ export default function Home({ file, cont }) {
         </div>
         <ShowData list={cont} />
       </main>
-    </div>
-    </div>
+
    
   );
 }

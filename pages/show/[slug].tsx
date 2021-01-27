@@ -23,11 +23,7 @@ const cont = arr.find(element => element[1] == pathForNotes);
 
   
   return (
-    <div className="w-100 h-100 flex justify-center">
-      <div className="complete ">
-        <div className="left-shadow">
-          
-      <Header />
+
 
       <main className="main">
       {/* <div className="player">Hello</div> */}
@@ -38,9 +34,7 @@ const cont = arr.find(element => element[1] == pathForNotes);
         </div>
         <ShowData list={cont[0]} />
       </main>
-      </div>
-      </div>
-    </div>
+
   );
 }
 
