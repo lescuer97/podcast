@@ -1,28 +1,20 @@
-import Header from "../components/Header";
-
-import {  GetStaticProps } from "next";
-
+import { GetStaticProps } from "next";
 import ShowData from "../components/ShowData";
 import { getAllPosts, markdownToHtml } from "../lib/getMarkdown";
 import { Items, Params } from "../lib/types";
 import Link from "next/link";
 
 export default function Home({ file, cont }) {
-//CONNECT TO CMS
+  //CONNECT TO CMS
   return (
-
-
-      <main className="main">
-        {/* <div className="player">Hello</div> */}
-        <div className="theme-scroll first-child " id="theme-scroll">
-          {file.map((list) => {
-            return <ListTile key={list.date} list={list} />;
-          })}
-        </div>
-        <ShowData list={cont} />
-      </main>
-
-   
+    <main className="main">
+      <div className="theme-scroll first-child " id="theme-scroll">
+        {file.map((list) => {
+          return <ListTile key={list.date} list={list} />;
+        })}
+      </div>
+      <ShowData list={cont} />
+    </main>
   );
 }
 
@@ -57,7 +49,6 @@ export const getStaticProps: GetStaticProps = async ({ params }: Params) => {
     "description",
     "content",
   ]);
- 
   const cont = await markdownToHtml(file[0].content);
 
   return {
