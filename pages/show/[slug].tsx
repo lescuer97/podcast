@@ -1,49 +1,43 @@
-import Header from "../../components/Header";
 import { useRouter } from "next/router";
 
 import { GetStaticProps, GetStaticPaths } from "next";
 
 import ShowData from "../../components/ShowData";
-import {
-  getAllPosts,
-  markdownToHtml,
-  getPostfromSlug,
-} from "../../lib/getMarkdown";
+import { getAllPosts, markdownToHtml } from "../../lib/getMarkdown";
 import { Items, Params } from "../../lib/types";
 import Link from "next/link";
 
 export default function Id({ file, arr }) {
+  const router = useRouter();
+  const pathForNotes = router.asPath.split("/show/")[1];
 
+  const cont = arr.find((element) => element[1] == pathForNotes);
 
-const router = useRouter();
-const pathForNotes= router.asPath.split("/show/")[1];
-
-const cont = arr.find(element => element[1] == pathForNotes);
-
-
-  
   return (
-
-
-      <main className="main">
+    <main className="main">
       {/* <div className="player">Hello</div> */}
       <div className="theme-scroll " id="theme-scroll">
-          {file.map((list) => {
-            return <ListTile key={list.date} list={list} />;
-          })}
-        </div>
-        <ShowData list={cont[0]} />
-      </main>
-
+        {file.map((list) => {
+          return <ListTile key={list.date} list={list} />;
+        })}
+      </div>
+      <ShowData list={cont[0]} />
+    </main>
   );
 }
 
 const ListTile = (props) => {
   const router = useRouter();
-const pathForNotes= router.asPath.split("/show/")[1];
+  //takes the slug of the url path
+  const pathForNotes = router.asPath.split("/show/")[1];
 
   return (
-    <div className={` py-1 pl-5 pr-3 border border-solid border-l-0 border-t-0 ${props.list.slug === pathForNotes && "bg-gray-200"}  `}>
+    <div
+      className={` py-1 pl-5 pr-3 border border-solid border-l-0 border-t-0 ${
+        // sees if the tile is the same as the selected slug and paints it of another color
+        props.list.slug === pathForNotes && "bg-gray-200"
+      }`}
+    >
       {" "}
       <Link
         href={{
@@ -72,16 +66,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     "content",
   ]);
   // get content from all posts
-  const contentarr = file.map(async (fi) => {
-    const hello = await markdownToHtml(fi.content);
+  const allPosts = file.map(async (post) => {
+    const hello = await markdownToHtml(post.content);
 
-    return [hello, fi.slug];
+    return [hello, post.slug];
   });
 
-// awaits the content promise so it can be pased to the page
-  const arr = await Promise.all(contentarr)
-    .then((fil) => {
-      return fil;
+  // awaits the content promise so it can be pased to the page
+  const arr = await Promise.all(allPosts)
+    .then((file) => {
+      return file;
     })
     .catch((err) => console.log("ERROR: ", err));
 

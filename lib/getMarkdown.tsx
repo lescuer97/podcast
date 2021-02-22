@@ -7,13 +7,16 @@ import html from "remark-html";
 import { Items } from "./types";
 const postsDirectory: string = path.join(process.cwd(), "content");
 
-export function getSlugs() {
+export function getFileName(): string[] {
   return fs.readdirSync(postsDirectory);
 }
 
-// retorna un solo objeto que es un post
-export function getPostfromSlug(slug: string, fields: string[] = []): Items {
-  const realSlug = slug.replace(/\.md$/, "");
+// return only one post
+export function getPostfromFileName(
+  fileName: string,
+  fields: string[] = []
+): Items {
+  const realSlug = fileName.replace(/\.md$/, "");
   const fullPath = path.join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
@@ -37,12 +40,15 @@ export function getPostfromSlug(slug: string, fields: string[] = []): Items {
   return items;
 }
 
+// fields is the wanted fields inside the markdown files
 export function getAllPosts(fields: string[] = []): Items[] {
-  const slugs = getSlugs();
+  // reads all file names in directory
+  const slugs = getFileName();
 
+  // loops the names to grab all the posts
   const posts: Items[] = slugs
     .map((slug) => {
-      return getPostfromSlug(slug, fields);
+      return getPostfromFileName(slug, fields);
     })
     .sort((post1, post2) => (post1.id < post2.id ? 1 : -1));
   return posts;
